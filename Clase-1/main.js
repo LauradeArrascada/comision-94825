@@ -1,41 +1,41 @@
-//pre-entrega 1
+let edad = Number(prompt('Ingrese su edad'));
 
-//let nombre = prompt ('Ingrese nombre');;
-//let apellido = prompt ('Ingrese apellido');
-//let nac = prompt ('Ingrese año de nacimiento');
-//const DNI = prompt ('Ingrese DNI');
-//let curso = "JavaScript";
-//let anioActual = 2026;
-//let edad = anioActual - (Number(nac));
-
-//alert('Se inscribio correctamente!');
-
-//let mensaje = "El alumno " + nombre + ' ' + apellido + ' ' +  "edad: " + edad + ' ' + "DNI: " + DNI + ' ' + "se inscribio en el curso: " + curso;
-//console.log(mensaje);
-
-//pre entrega2
-
-let contadorVIP = 0;
-
-for (let i= 1; i <= 50; i++) {
-
-    let entrada = prompt("¿Que entrada desea? vip o comun");
-    console.log(entrada);
-
-    if (entrada === 'vip' && contadorVIP < 20) {
-        
-            contadorVIP++
-            console.log("Entrada VIP vendida");
-
-        } else if (entrada === 'vip' && contadorVIP >= 20) {
-            console.log("No quedan entradas VIP");
-            
-        } else if (entrada === 'comun') {
-            console.log("Entrada comun vendida");
-
-        } else {
-            console.log("Opción no válida");
-        }  
+function verificarEdad(edad) {
+    if (edad >= 18) {
+        return true;
+    } else {
+        return false;
     }
+}
 
-console.log(contadorVIP);
+let resultado = verificarEdad(edad);
+
+function elegirEntrada(tipo) {
+    if (tipo === "vip") {
+        console.log("Elegiste una entrada VIP");
+    } else if (tipo === "común") {
+        console.log("Elegiste una entrada común");
+    } else {
+        console.log("Tipo de entrada no válido");
+    }
+}
+
+const puedeComprar = (resultado) => {
+    if (resultado === true) {
+        console.log("Puede comprar entradas");
+        let tipo = prompt("Elegí una entrada: VIP o común");
+        elegirEntrada(tipo);
+        let cantidad = Number(prompt("¿Cuántas entradas querés comprar?"));
+        for (let i = 1; i <= cantidad; i++) {
+        console.log("Procesando entrada número " + i);
+    }
+        } else {
+        console.log("No puede comprar entradas");
+    }
+};
+
+puedeComprar(resultado);
+
+
+
+
