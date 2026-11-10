@@ -1,3 +1,4 @@
+
 let edad = Number(prompt('Ingrese su edad'));
 
 function verificarEdad(edad) {
@@ -8,17 +9,24 @@ function verificarEdad(edad) {
     }
 }
 
+// Función para mostrar las entradas
+function mostrarEntradas(entradas) {
+    for (let entrada of entradas) {
+        console.log("Ubicación: " + entrada);
+    }
+}
+
 const puedeComprar = (resultado) => {
     if (resultado === true) {
         console.log("Puede comprar entradas");
 
         // ARRAY DE ENTRADAS
-
         let entradas = [
             "Platea Media",
             "Platea Baja",
             "Campo",
-            "Campo VIP"
+            "Campo VIP",
+            "Entrada General"
         ];
 
         // Agregamos al principio
@@ -28,29 +36,27 @@ const puedeComprar = (resultado) => {
         entradas.push("Entrada con Cena");
 
         // Eliminamos la última entrada
-        entradas.pop();
+        let eliminado = entradas.pop();
+        console.log("Se ha eliminado el elemento: " + eliminado);
 
-        // Modificamos Campo VIP
-        entradas[4] = "Campo Preferencial";
+        // Modificamos Campo VIP con splice
+        entradas.splice(4, 1, "Campo Preferencial");
 
         console.log("Lista definitiva:", entradas);
 
         // Mostramos las ubicaciones
-
         console.log("Seleccione ubicación:");
-
-        for (let entrada of entradas) {
-            console.log(entrada);
-        }
+        mostrarEntradas(entradas);
 
         // Elegimos ubicación
-
         let ubicacionElegida = prompt("¿Qué ubicación querés elegir?");
 
         // Validamos la ubicación
-
         if (entradas.includes(ubicacionElegida)) {
             console.log("Ubicación válida");
+
+            let posicion = entradas.indexOf(ubicacionElegida);
+            console.log("La ubicación está en la posición: " + posicion);
 
             let cantidadElegida = Number(prompt("¿Cuántas entradas querés de esta ubicación?"));
 
@@ -60,9 +66,9 @@ const puedeComprar = (resultado) => {
             console.log("La ubicación no existe");
         }
 
-    } else {
-        console.log("No puede comprar entradas");
-    }
+            } else {
+            console.log("No puede comprar entradas");
+        }
 };
 
 if (isNaN(edad)) {
